@@ -33,7 +33,11 @@ describe GildedRose do
       items = [Item.new("foo", 0, 0)]
       expect {GildedRose.new(items).update_quality()}.to change {items[0].quality}.by(0)
     end
-    #
+
+    it " 'Aged Brie' actually increases in Quality the older it gets" do
+      items = [Item.new("Aged Brie", 0, 10)]
+      expect {GildedRose.new(items).update_quality()}.to change {items[0].quality}.by(2)
+    end
     # it "never increases in quality beyond 50" do
     #
     # end
