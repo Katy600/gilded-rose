@@ -1,5 +1,4 @@
 class GildedRose
-
   def initialize(item)
     @items = item
     @items_past_their_sell_by_date = []
@@ -14,11 +13,7 @@ class GildedRose
 
   def sort_items_by_sell_by_date
     @items.each do |item|
-      if item.sell_in <= 0
-        @items_past_their_sell_by_date << item
-      else
-        @items_within_their_sell_by_date << item
-      end
+      item.sell_in <= 0 ? (@items_past_their_sell_by_date << item) : (@items_within_their_sell_by_date << item)
     end
   end
 
@@ -34,7 +29,7 @@ class GildedRose
 
   def prevent_quality_from_going_below_zero(items)
     @items = items
-    @items.map{|item| item.quality = 0 if item.quality <= 0 && item.sell_in <= 0}
+    @items.map {|item| item.quality = 0 if item.quality <= 0 && item.sell_in <= 0}
   end
 end
 
