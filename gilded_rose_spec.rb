@@ -38,10 +38,12 @@ describe GildedRose do
       items = [Item.new("Aged Brie", 0, 10)]
       expect {GildedRose.new(items).update_quality()}.to change {items[0].quality}.by(2)
     end
-    # it "never increases in quality beyond 50" do
-    #
-    # end
 
+    it '(the quality) is never more than 50' do
+      items = [Item.new("Aged Brie", 0, 50)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq 50
+    end
   end
 
   describe Item do
