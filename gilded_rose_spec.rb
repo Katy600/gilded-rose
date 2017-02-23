@@ -66,7 +66,6 @@ describe GildedRose do
       GildedRose.new(items).update_quality()
       expect(items[0].quality).to eq 0
     end
-
   end
 
   describe Item do
